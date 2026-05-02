@@ -1,0 +1,111 @@
+{
+  "agents": {
+    "defaults": {
+      "workspace": "/root/.openclaw/workspace",
+      "models": {
+        "openai/gpt-5.5": {},
+        "openai-codex/gpt-5.4": {}
+      },
+      "model": {
+        "primary": "nvidia/deepseek-ai/deepseek-v4-flash",
+        "fallback": "openai-codex/gpt-5.4"
+      }
+    }
+  },
+  "gateway": {
+    "mode": "local",
+    "auth": {
+      "mode": "token",
+      "token": "a4263085fc4726d74ddb4fd10aaddafa824c64b763f36d14"
+    },
+    "port": 18789,
+    "bind": "loopback",
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    },
+    "controlUi": {
+      "allowInsecureAuth": true
+    },
+    "nodes": {
+      "denyCommands": [
+        "camera.snap",
+        "camera.clip",
+        "screen.record",
+        "contacts.add",
+        "calendar.add",
+        "reminders.add",
+        "sms.send",
+        "sms.search"
+      ]
+    }
+  },
+  "session": {
+    "dmScope": "per-channel-peer"
+  },
+  "tools": {
+    "profile": "coding"
+  },
+  "auth": {
+    "profiles": {
+      "openai-codex:julioamancio2014@gmail.com": {
+        "provider": "openai-codex",
+        "mode": "oauth",
+        "email": "julioamancio2014@gmail.com"
+      }
+    }
+  },
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "groups": {
+        "*": {
+          "requireMention": true
+        }
+      },
+      "botToken": "8539362411:AAEyNR_XwppwXDENqb4nupleRB9xffUIn98"
+    }
+  },
+  "wizard": {
+    "lastRunAt": "2026-04-24T20:18:27.861Z",
+    "lastRunVersion": "2026.4.23",
+    "lastRunCommand": "onboard",
+    "lastRunMode": "local"
+  },
+  "meta": {
+    "lastTouchedVersion": "2026.4.23",
+    "lastTouchedAt": "2026-04-24T20:27:29.115Z"
+  },
+  "plugins": {
+    "entries": {
+      "openai": {
+        "enabled": true
+      }
+    }
+  },
+  "env": {
+    "NVIDIA_API_KEY": "SUA_NOVA_CHAVE_NVIDIA_AQUI"
+  },
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "nvidia": {
+        "baseUrl": "https://integrate.api.nvidia.com/v1",
+        "apiKey": "${NVIDIA_API_KEY}",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "deepseek-ai/deepseek-v4-flash",
+            "name": "DeepSeek V4 Flash via NVIDIA",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "contextWindow": 200000,
+            "maxTokens": 16384
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "agents": {
+    "defaults": {
+      "workspace": "/root/.openclaw/workspace",
+      "models": {
+        "openai/gpt-5.5": {},
+        "openai-codex/gpt-5.4": {},
+        "nvidia-nim/deepseek-ai/deepseek-v4-pro": {},
+        "nvidia-nim/minimaxai/minimax-m2.7": {}
+      },
+      "model": {
+        "primary": "openai-codex/gpt-5.4",
+        "fallbacks": [
+          "openai/gpt-5.5",
+          "nvidia-nim/deepseek-ai/deepseek-v4-pro",
+          "nvidia-nim/minimaxai/minimax-m2.7"
+        ]
+      }
+    }
+  },
+  "gateway": {
+    "mode": "local",
+    "auth": {
+      "mode": "token",
+      "token": "a4263085fc4726d74ddb4fd10aaddafa824c64b763f36d14"
+    },
+    "port": 18789,
+    "bind": "loopback",
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    },
+    "controlUi": {
+      "allowInsecureAuth": true
+    },
+    "nodes": {
+      "denyCommands": [
+        "camera.snap",
+        "camera.clip",
+        "screen.record",
+        "contacts.add",
+        "calendar.add",
+        "reminders.add",
+        "sms.send",
+        "sms.search"
+      ]
+    }
+  },
+  "session": {
+    "dmScope": "per-channel-peer"
+  },
+  "tools": {
+    "profile": "coding"
+  },
+  "auth": {
+    "profiles": {
+      "openai-codex:julioamancio2014@gmail.com": {
+        "provider": "openai-codex",
+        "mode": "oauth",
+        "email": "julioamancio2014@gmail.com"
+      }
+    }
+  },
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "groups": {
+        "*": {
+          "requireMention": true
+        }
+      },
+      "botToken": "8539362411:AAEyNR_XwppwXDENqb4nupleRB9xffUIn98"
+    }
+  },
+  "wizard": {
+    "lastRunAt": "2026-04-24T20:18:27.861Z",
+    "lastRunVersion": "2026.4.23",
+    "lastRunCommand": "onboard",
+    "lastRunMode": "local"
+  },
+  "meta": {
+    "lastTouchedVersion": "2026.4.23",
+    "lastTouchedAt": "2026-04-24T20:27:29.115Z"
+  },
+  "plugins": {
+    "entries": {
+      "openai": {
+        "enabled": true
+      }
+    }
+  },
+  "models": {
+    "providers": {
+      "nvidia-nim": {
+        "baseUrl": "https://integrate.api.nvidia.com/v1",
+        "apiKey": "${NVIDIA_NIM_API_KEY}",
+        "auth": "api-key",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "deepseek-ai/deepseek-v4-pro",
+            "name": "DeepSeek V4 Pro",
+            "api": "openai-completions",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 128000,
+            "maxTokens": 16384
+          },
+          {
+            "id": "minimaxai/minimax-m2.7",
+            "name": "MiniMax M2.7",
+            "api": "openai-completions",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 128000,
+            "maxTokens": 8192
+          }
+        ]
+      }
+    }
+  }
+}
