@@ -1,0 +1,289 @@
+{
+  "agents": {
+    "defaults": {
+      "workspace": "/root/.openclaw/workspace",
+      "models": {
+        "openai/gpt-5.5": {},
+        "openai-codex/gpt-5.4": {},
+        "nvidia-nim/deepseek-ai/deepseek-v4-pro": {},
+        "nvidia-nim/minimaxai/minimax-m2.7": {},
+        "nvidia-nim/mistralai/mistral-large-3-675b-instruct-2512": {},
+        "nvidia-nim/google/gemma-4-31b-it": {},
+        "nvidia-nim/z-ai/glm4.7": {},
+        "nvidia-nim/deepseek-ai/deepseek-v4-flash": {},
+        "nvidia-nim/qwen/qwen3.5-397b-a17b": {},
+        "nvidia-nim/nvidia/nemotron-3-nano-30b-a3b": {},
+        "nvidia-nim/z-ai/glm-5.1": {},
+        "nvidia-nim/openai/gpt-oss-20b": {}
+      },
+      "model": {
+        "primary": "openai-codex/gpt-5.4",
+        "fallbacks": [
+          "nvidia-nim/openai/gpt-oss-20b",
+          "nvidia-nim/nvidia/nemotron-3-nano-30b-a3b",
+          "nvidia-nim/mistralai/mistral-large-3-675b-instruct-2512",
+          "nvidia-nim/google/gemma-4-31b-it",
+          "nvidia-nim/z-ai/glm-5.1",
+          "nvidia-nim/qwen/qwen3.5-397b-a17b",
+          "nvidia-nim/deepseek-ai/deepseek-v4-pro",
+          "nvidia-nim/deepseek-ai/deepseek-v4-flash",
+          "nvidia-nim/z-ai/glm4.7",
+          "nvidia-nim/minimaxai/minimax-m2.7"
+        ]
+      }
+    }
+  },
+  "gateway": {
+    "mode": "local",
+    "auth": {
+      "mode": "token",
+      "token": "a4263085fc4726d74ddb4fd10aaddafa824c64b763f36d14"
+    },
+    "port": 18789,
+    "bind": "loopback",
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    },
+    "controlUi": {
+      "allowInsecureAuth": true
+    },
+    "nodes": {
+      "denyCommands": [
+        "camera.snap",
+        "camera.clip",
+        "screen.record",
+        "contacts.add",
+        "calendar.add",
+        "reminders.add",
+        "sms.send",
+        "sms.search"
+      ]
+    }
+  },
+  "session": {
+    "dmScope": "per-channel-peer"
+  },
+  "tools": {
+    "profile": "coding"
+  },
+  "auth": {
+    "profiles": {
+      "openai-codex:julioamancio2014@gmail.com": {
+        "provider": "openai-codex",
+        "mode": "oauth",
+        "email": "julioamancio2014@gmail.com"
+      }
+    }
+  },
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "groups": {
+        "*": {
+          "requireMention": true
+        }
+      },
+      "botToken": "8539362411:AAEyNR_XwppwXDENqb4nupleRB9xffUIn98"
+    }
+  },
+  "wizard": {
+    "lastRunAt": "2026-04-24T20:18:27.861Z",
+    "lastRunVersion": "2026.4.23",
+    "lastRunCommand": "onboard",
+    "lastRunMode": "local"
+  },
+  "meta": {
+    "lastTouchedVersion": "2026.4.23",
+    "lastTouchedAt": "2026-04-24T20:27:29.115Z"
+  },
+  "plugins": {
+    "entries": {
+      "openai": {
+        "enabled": true
+      }
+    }
+  },
+  "models": {
+    "providers": {
+      "nvidia-nim": {
+        "baseUrl": "https://integrate.api.nvidia.com/v1",
+        "apiKey": "${NVIDIA_NIM_API_KEY}",
+        "auth": "api-key",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "deepseek-ai/deepseek-v4-pro",
+            "name": "DeepSeek V4 Pro",
+            "api": "openai-completions",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 128000,
+            "maxTokens": 16384
+          },
+          {
+            "id": "minimaxai/minimax-m2.7",
+            "name": "MiniMax M2.7",
+            "api": "openai-completions",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 128000,
+            "maxTokens": 8192
+          },
+          {
+            "id": "mistralai/mistral-large-3-675b-instruct-2512",
+            "name": "Mistral Large 3 675B Instruct 2512",
+            "api": "openai-completions",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 128000,
+            "maxTokens": 2048
+          },
+          {
+            "id": "google/gemma-4-31b-it",
+            "name": "Gemma 4 31B IT",
+            "api": "openai-completions",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 128000,
+            "maxTokens": 16384
+          },
+          {
+            "id": "z-ai/glm4.7",
+            "name": "GLM 4.7",
+            "api": "openai-completions",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 128000,
+            "maxTokens": 16384
+          },
+          {
+            "id": "deepseek-ai/deepseek-v4-flash",
+            "name": "DeepSeek V4 Flash",
+            "api": "openai-completions",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 128000,
+            "maxTokens": 16384
+          },
+          {
+            "id": "qwen/qwen3.5-397b-a17b",
+            "name": "Qwen 3.5 397B A17B",
+            "api": "openai-completions",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 128000,
+            "maxTokens": 16384
+          },
+          {
+            "id": "nvidia/nemotron-3-nano-30b-a3b",
+            "name": "Nemotron 3 Nano 30B A3B",
+            "api": "openai-completions",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 128000,
+            "maxTokens": 16384
+          },
+          {
+            "id": "z-ai/glm-5.1",
+            "name": "GLM 5.1",
+            "api": "openai-completions",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 128000,
+            "maxTokens": 16384
+          },
+          {
+            "id": "openai/gpt-oss-20b",
+            "name": "GPT-OSS 20B",
+            "api": "openai-completions",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 128000,
+            "maxTokens": 4096
+          }
+        ]
+      }
+    }
+  }
+}
